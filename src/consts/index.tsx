@@ -1,10 +1,14 @@
 import { EXPERIENCES, Link } from '../types';
+import { IoLogoGithub } from 'react-icons/io5';
+import { IoLogoLinkedin } from 'react-icons/io';
+import { IoIosMail } from 'react-icons/io';
+import { IoIosPaper } from 'react-icons/io';
 
 export const LINKS: Link[] = [
-  { type: 'Github', image: '', url: '' },
-  { type: 'LinkedIn', image: '', url: '' },
-  { type: 'Email', image: '', url: '' },
-  { type: 'Blog', image: '', url: '' },
+  { type: 'Github', icon: <IoLogoGithub />, url: 'https://github.com/eepyz' },
+  { type: 'LinkedIn', icon: <IoLogoLinkedin />, url: 'https://www.linkedin.com/in/eepyzmh/' },
+  { type: 'Email', icon: <IoIosMail />, url: 'eepy2.23@gmail.com' },
+  { type: 'Blog', icon: <IoIosPaper />, url: 'https://velog.io/@eepy/posts' },
 ];
 
 export const SKILLS = ['JavaScript', 'TypeScript', 'React', 'Next.js', 'TailwindCSS', 'Three.js'];

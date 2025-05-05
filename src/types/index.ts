@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 export interface Link {
   type: string;
-  image: string;
+  icon: ReactNode;
   url: string;
 }
 
