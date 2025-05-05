@@ -24,15 +24,17 @@ function App() {
         <section>
           <Title title="About Me" />
           <div>
-            <div className="flex justify-between items-center py-14">
+            <div className="flex justify-between items-center py-14 flex-col md:flex-row gap-4">
               <ProfileImage />
               <InfoDetail />
             </div>
-            <div className="flex flex-wrap gap-1 items-center">
+            <div className="flex md:flex-row flex-col items-center gap-2">
               <div className="text-xl font-medium mr-2">Skills</div>
-              {SKILLS.map((skill) => (
-                <SkillChip key={skill} skill={skill} />
-              ))}
+              <div className="flex flex-wrap gap-1 justify-center md:justify-start">
+                {SKILLS.map((skill) => (
+                  <SkillChip key={skill} skill={skill} />
+                ))}
+              </div>
             </div>
           </div>
         </section>

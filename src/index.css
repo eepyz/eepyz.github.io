@@ -10,5 +10,5 @@
 
 body {
   font-family: 'Pretendard', sans-serif;
-  @apply text-[#393939];
+  @apply text-[#393939] md:px-0 px-4;
 }
