@@ -6,9 +6,14 @@ export interface Link {
   url: string;
 }
 
+export interface Contents {
+  main: string;
+  sub?: string;
+}
+
 export interface Description {
   title: string;
-  contents: string[];
+  contents: Contents[];
 }
 
 export interface EXPERIENCES {
