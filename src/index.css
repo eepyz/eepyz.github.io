@@ -10,8 +10,5 @@
 
 body {
   font-family: 'Pretendard', sans-serif;
-}
-
-section {
-  @apply p-4;
+  @apply text-[#393939];
 }
