@@ -37,7 +37,7 @@ export const PROJECTS: EXPERIENCES[] = [
   {
     name: 'VS.GG',
     role: '프론트엔드 개발자',
-    period: '2024.04 - 2025.06',
+    period: '2024.04 - 2024.06',
     description: {
       title: '리그 오브 레전드 과실 판결 커뮤니티 플랫폼',
       contents: [
