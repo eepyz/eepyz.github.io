@@ -84,7 +84,7 @@ export const PROJECTS: EXPERIENCES[] = [
 
 export const EDUCATION: EXPERIENCES[] = [
   {
-    name: `모두의 연구소 \n 웹 프론트엔드 부트캠프`,
+    name: `모두의연구소  \n 프론트엔드 개발 과정 3기`,
     period: '2024.10 - 2025.01',
     description: {
       title: '',
@@ -101,7 +101,7 @@ export const EDUCATION: EXPERIENCES[] = [
     link: '',
   },
   {
-    name: '항해 99 플러스 프론트엔드',
+    name: '항해 99 플러스 프론트엔드 2기',
     period: '2024.06 - 2024.08',
     description: {
       title: '',
