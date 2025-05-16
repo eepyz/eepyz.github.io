@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { EXPERIENCES } from '../types';
 
 interface ExperiencesProps {
@@ -7,10 +8,12 @@ interface ExperiencesProps {
 export function Experiences({ experiences }: ExperiencesProps) {
   return (
     <div className="flex flex-col gap-20 py-10 ">
-      {experiences.map(({ name, period, role, description, link }) => (
+      {experiences.map(({ name, period, role, description, link, href }) => (
         <div key={name} className="md:grid md:grid-cols-[_1fr_2fr] flex flex-col">
           <div className="text-center md:text-start">
-            <div className="text-2xl md:text-lg font-bold break-words whitespace-pre-line">{name}</div>
+            <Link to={href as string} className="text-2xl md:text-lg font-bold break-words whitespace-pre-line">
+              {name}
+            </Link>
             <div className="hidden md:block">
               <div>{role}</div>
               <div className="text-[#adadad] font-light">{period}</div>

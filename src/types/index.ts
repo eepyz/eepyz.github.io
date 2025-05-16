@@ -22,4 +22,5 @@ export interface EXPERIENCES {
   period: string;
   description: Description;
   link?: string;
+  href?: string;
 }
