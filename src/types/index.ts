@@ -16,7 +16,16 @@ export interface Description {
   contents: Contents[];
 }
 
-export interface EXPERIENCES {
+export interface Project {
+  name: string;
+  role?: string;
+  period: string;
+  description: Description;
+  link?: string;
+  href?: string;
+}
+
+export interface EXPERIENCE {
   name: string;
   role?: string;
   period: string;

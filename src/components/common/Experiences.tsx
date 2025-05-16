@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
-import { EXPERIENCES } from '../types';
-
+import { EXPERIENCE } from '../../types';
 interface ExperiencesProps {
-  experiences: EXPERIENCES[];
+  experiences: EXPERIENCE[];
 }
 
 export function Experiences({ experiences }: ExperiencesProps) {
