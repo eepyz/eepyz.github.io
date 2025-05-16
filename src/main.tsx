@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import './index.css';
 import App from './App.tsx';
-import HearimProject from './components/HearimProject';
-import VsggProject from './components/VsggProject';
-import DesserbeeProject from './components/DesserbeeProject';
+import HearimProject from './pages/projects/HearimProject.tsx';
+import VsggProject from './pages/projects/VsggProject.tsx';
+import DesserbeeProject from './pages/projects/DesserbeeProject.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

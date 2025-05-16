@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { Experiences } from './components/Experiences';
-import { InfoDetail } from './components/InfoDetail';
-import { LinkButton } from './components/LinkButton';
-import { MyInfo } from './components/MyInfo';
-import { ProfileImage } from './components/ProfileImage';
-import { SkillChip } from './components/SkillChip';
-import { Title } from './components/Title';
 import { EDUCATION, LINKS, PROJECTS, SKILLS } from './consts';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { IoMoon, IoSunny } from 'react-icons/io5';
+import { MyInfo } from './components/common/MyInfo';
+import { LinkButton } from './components/common/LinkButton';
+import { Title } from './components/common/Title';
+import { ProfileImage } from './components/common/ProfileImage';
+import { InfoDetail } from './components/common/InfoDetail';
+import { SkillChip } from './components/common/SkillChip';
+import { Experiences } from './components/common/Experiences';
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
