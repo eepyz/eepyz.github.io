@@ -1,4 +1,4 @@
-import { EXPERIENCES, Link } from '../types';
+import { EXPERIENCE, Link, Project } from '../types';
 import { IoLogoGithub } from 'react-icons/io5';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { IoIosMail } from 'react-icons/io';
@@ -13,7 +13,7 @@ export const LINKS: Link[] = [
 
 export const SKILLS = ['JavaScript', 'TypeScript', 'React', 'Next.js', 'TailwindCSS', 'Three.js', 'React-Three-Fiber'];
 
-export const PROJECTS: EXPERIENCES[] = [
+export const PROJECTS: Project[] = [
   {
     name: '디저비',
     role: '프론트엔드 개발자',
@@ -36,6 +36,9 @@ export const PROJECTS: EXPERIENCES[] = [
       ],
     },
     link: 'https://desserbee.com',
+    logo: '/images/desserbee-logo.webp',
+    img: '/images/desserbee.webp',
+    color: '#ffd268',
     href: '/desserbee',
   },
   {
@@ -60,6 +63,9 @@ export const PROJECTS: EXPERIENCES[] = [
       ],
     },
     link: 'https://vsgg.co.kr/',
+    logo: '/images/vs-gg-logo.png',
+    img: '/images/vsgg.webp',
+    color: '#ffffff',
     href: '/vsgg',
   },
   {
@@ -83,11 +89,14 @@ export const PROJECTS: EXPERIENCES[] = [
         },
       ],
     },
+    logo: '/images/hearim-logo.webp',
+    color: '#426eba',
+    img: '/images/hearim.webp',
     href: '/hearim',
   },
 ];
 
-export const EDUCATION: EXPERIENCES[] = [
+export const EDUCATION: EXPERIENCE[] = [
   {
     name: '모두의 연구소',
     role: '3D 인터랙티브 웹 개발',

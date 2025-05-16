@@ -23,6 +23,9 @@ export interface Project {
   description: Description;
   link?: string;
   href?: string;
+  color?: string;
+  logo?: string;
+  img?: string;
 }
 
 export interface EXPERIENCE {

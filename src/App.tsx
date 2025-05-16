@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { EDUCATION, LINKS, PROJECTS, SKILLS } from './consts';
+import { EDUCATION, LINKS, SKILLS } from './consts';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { IoMoon, IoSunny } from 'react-icons/io5';
 import { MyInfo } from './components/common/MyInfo';
@@ -9,6 +9,7 @@ import { ProfileImage } from './components/common/ProfileImage';
 import { InfoDetail } from './components/common/InfoDetail';
 import { SkillChip } from './components/common/SkillChip';
 import { Experiences } from './components/common/Experiences';
+import { Projects } from './components/projects';
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
@@ -74,7 +75,7 @@ function AppContent() {
           {/* Project */}
           <section>
             <Title title="Project" />
-            <Experiences experiences={PROJECTS} />
+            <Projects />
           </section>
 
           {/* Education */}
