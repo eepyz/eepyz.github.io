@@ -4,6 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function SelectedProject() {
   const { currentProject } = useProject();
 
+  const handleProjectLinkClick = () => {
+    if (currentProject?.link) {
+      window.open(currentProject.link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div className="p-4">
       <AnimatePresence mode="wait">
@@ -42,7 +48,10 @@ export function SelectedProject() {
                   delay: 0.05,
                   duration: 0.6,
                 }}
-                className="w-[300px] h-[400px] rounded-sm relative overflow-hidden transform shadow-[-20px_20px_30px_rgba(0,0,0,0.4)] transition-all duration-300"
+                onClick={handleProjectLinkClick}
+                className={`w-[300px] h-[400px] rounded-sm relative overflow-hidden transform shadow-[-20px_20px_30px_rgba(0,0,0,0.4)] transition-all duration-300 ${
+                  currentProject.link ? 'cursor-pointer hover:brightness-105' : ''
+                }`}
                 style={{
                   boxShadow: '-20px 20px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.4)',
                 }}>
@@ -50,9 +59,13 @@ export function SelectedProject() {
                   initial={{ scale: 1.2 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.7 }}
-                  className="w-full h-full">
+                  className={`bg-[${currentProject.color}] ` + 'w-full h-full'}>
                   {currentProject.img ? (
-                    <img src={currentProject.img} className="w-full h-full object-cover" alt={currentProject.name} />
+                    <img
+                      src={currentProject.img}
+                      className="w-full h-full object-contain p-4"
+                      alt={currentProject.name}
+                    />
                   ) : (
                     <div className={`w-full h-full bg-[${currentProject.color}]`}>
                       {currentProject.logo && (
@@ -138,19 +151,6 @@ export function SelectedProject() {
                   </motion.div>
                 ))}
               </motion.div>
-
-              {currentProject.link && (
-                <motion.a
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 1 }}
-                  href={currentProject.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline mt-8 inline-block">
-                  {currentProject.link}
-                </motion.a>
-              )}
             </motion.div>
           </motion.div>
         ) : (

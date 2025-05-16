@@ -1,4 +1,4 @@
-import { Link } from '../types';
+import { Link } from '../../types';
 const onClick = (url: string) => {
   window.open(url, '_blank', 'noopener,noreferrer');
 };
