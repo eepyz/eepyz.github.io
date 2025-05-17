@@ -18,8 +18,8 @@ export function ProjectList() {
           onClick={() => handleCurrentProjectClick(project, index)}
           className={
             `bg-[${project.color}] ` +
-            'cursor-pointer aspect-[4/5] min-h-[100px] md:h-[180px] rounded-sm relative overflow-hidden shadow-[-30px_4px_12px_-1px_rgba(0,_0,_0,_0.7)] hover:scale-120 transition-transform hover:z-10' +
-            (currentIndex === index && ' scale-120 ')
+            (currentIndex === index && ' scale-120 z-10 ') +
+            'cursor-pointer aspect-[4/5] min-h-[100px] md:h-[180px] rounded-sm relative overflow-hidden shadow-[-30px_4px_12px_-1px_rgba(0,_0,_0,_0.7)] hover:scale-120 transition-transform hover:z-10'
           }>
           {project.logo && (
             <img
