@@ -5,9 +5,9 @@ import { SelectedProject } from './SelectedProject';
 export function Projects() {
   return (
     <ProjectProvider>
-      <div className="flex flex-col gap-10">
-        <SelectedProject />
+      <div className="flex flex-col gap-10 py-10">
         <ProjectList />
+        <SelectedProject />
       </div>
     </ProjectProvider>
   );

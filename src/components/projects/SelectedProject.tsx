@@ -2,7 +2,7 @@ import { useProject } from '../../context/useProject';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function SelectedProject() {
-  const { currentProject } = useProject();
+  const { currentProject, nextProject, prevProject } = useProject();
 
   const handleProjectLinkClick = () => {
     if (currentProject?.link) {
@@ -11,7 +11,40 @@ export function SelectedProject() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 relative ">
+      {/* 왼쪽 화살표 */}
+
+      <motion.button
+        onClick={prevProject}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="cursor-pointer flex absolute  left-[-10px] md:left-[-40px] top-1/5 md:top-1/2 -translate-y-1/2 group-hover:flex justify-center items-center w-10 h-10 md:w-12 md:h-12 rounded-full z-10 shadow-md backdrop-blur-sm">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 md:h-6 md:w-6 text-gray-700"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </motion.button>
+
+      {/* 오른쪽 화살표 */}
+      <motion.button
+        onClick={nextProject}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="cursor-pointer flex absolute right-[-30px] md:right-[-40px] top-1/5 md:top-1/2  -translate-y-1/2 group-hover:flex justify-center items-center w-10 h-10 md:w-12 md:h-12 rounded-full z-10 shadow-md backdrop-blur-sm">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 md:h-6 md:w-6 text-gray-700"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </motion.button>
+
       <AnimatePresence mode="wait">
         {currentProject ? (
           <motion.div
@@ -20,7 +53,7 @@ export function SelectedProject() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col md:flex-row gap-16">
+            className="flex flex-col items-center md:flex-row gap-16">
             <div className="relative">
               <motion.div
                 initial={{
@@ -49,7 +82,7 @@ export function SelectedProject() {
                   duration: 0.6,
                 }}
                 onClick={handleProjectLinkClick}
-                className={`w-[300px] h-[400px] rounded-sm relative overflow-hidden transform shadow-[-20px_20px_30px_rgba(0,0,0,0.4)] transition-all duration-300 ${
+                className={`aspect-[3/4] min-w-[200px]  max-w-[300px] max-h-[400px] rounded-sm relative overflow-hidden transform shadow-[-20px_20px_30px_rgba(0,0,0,0.4)] transition-all duration-300 ${
                   currentProject.link ? 'cursor-pointer hover:brightness-105' : ''
                 }`}
                 style={{
@@ -63,7 +96,7 @@ export function SelectedProject() {
                   {currentProject.img ? (
                     <img
                       src={currentProject.img}
-                      className="w-full h-full object-contain p-4"
+                      className="w-full h-full object-cover p-4"
                       alt={currentProject.name}
                     />
                   ) : (
@@ -94,11 +127,6 @@ export function SelectedProject() {
                     )`,
                   }}></div>
               </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute bottom-[-40px] left-[10px] right-[10px] h-[20px] bg-black/20 blur-xl rounded-full z-[-1]"></motion.div>
             </div>
             <motion.div
               className="flex-1 pt-6"
@@ -122,11 +150,10 @@ export function SelectedProject() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
-                  className="text-gray-600 mb-4 text-lg">
+                  className="text-#979797-600 mb-1 text-lg">
                   {currentProject.role}
                 </motion.p>
               )}
-
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

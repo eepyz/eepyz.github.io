@@ -3,26 +3,28 @@ import { PROJECTS } from '../../consts';
 import { Project } from '../../types';
 
 export function ProjectList() {
-  const { setCurrentProject } = useProject();
+  const { currentIndex, setCurrentProject, handleCurrentIndexChange } = useProject();
 
-  const handleCurrentProjectClick = (project: Project) => {
+  const handleCurrentProjectClick = (project: Project, index: number) => {
     setCurrentProject(project);
+    handleCurrentIndexChange(index);
   };
 
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 justify-center min-h-[100px]">
       {PROJECTS.map((project, index) => (
         <button
           key={`${project.name}-${index}`}
-          onClick={() => handleCurrentProjectClick(project)}
+          onClick={() => handleCurrentProjectClick(project, index)}
           className={
             `bg-[${project.color}] ` +
-            'cursor-pointer w-[128px] h-[180px] rounded-sm relative overflow-hidden hover:shadow-[-40px_10px_12px_-1px_rgba(0,_0,_0,_0.7)] shadow-[-30px_4px_12px_-1px_rgba(0,_0,_0,_0.7)] hover:scale-120 transition-transform hover:z-10'
+            'cursor-pointer aspect-[4/5] min-h-[100px] md:h-[180px] rounded-sm relative overflow-hidden shadow-[-30px_4px_12px_-1px_rgba(0,_0,_0,_0.7)] hover:scale-120 transition-transform hover:z-10' +
+            (currentIndex === index && ' scale-120 ')
           }>
           {project.logo && (
             <img
               src={project.logo}
-              className="absolute left-1/2 top-1/2 w-[50px] h-[50px] object-contain -translate-x-1/2 -translate-y-1/2"
+              className="absolute left-1/2 top-1/2 w-9 h-9 md:w-[50px] md:h-[50px] object-contain -translate-x-1/2 -translate-y-1/2"
               alt={project.name}
             />
           )}
