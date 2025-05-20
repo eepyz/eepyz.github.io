@@ -13,12 +13,12 @@ export function SelectedProject() {
   return (
     <div className="relative px-4">
       {/* 네비게이션 버튼 */}
-      <div className="absolute inset-y-0 left-0 flex items-center">
+      <div className="z-100 absolute inset-y-0 left-0 flex items-center -translate-y-25">
         <motion.button
           onClick={prevProject}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary  cursor-pointer transition-colors duration-300 z-50">
+          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary cursor-pointer transition-colors duration-300 z-50">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -30,12 +30,12 @@ export function SelectedProject() {
         </motion.button>
       </div>
 
-      <div className="absolute inset-y-0 right-0 flex items-center">
+      <div className="z-100 absolute inset-y-0 right-0 flex items-center -translate-y-25">
         <motion.button
           onClick={nextProject}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary cursor-pointer  transition-colors duration-300 z-50">
+          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary cursor-pointer transition-colors duration-300 z-50">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

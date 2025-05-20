@@ -13,7 +13,7 @@ export function ProjectList() {
 
   return (
     <div className="relative w-full">
-      <div className="flex gap-4 px-4 justify-center w-full">
+      <div className="md:flex-row flex-col flex gap-4 px-4 justify-center w-full">
         {PROJECTS.map((project, index) => (
           <motion.button
             key={`${project.name}-${index}`}
@@ -24,11 +24,11 @@ export function ProjectList() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}>
             <div
-              className={`relative w-[220px] rounded-xl overflow-hidden bg-white dark:bg-gray-800 transition-all duration-300 shadow-lg`}>
-              <div className="p-6 space-y-4">
+              className={`relative w-full md:w-[220px] rounded-xl overflow-hidden bg-white dark:bg-gray-800 transition-all duration-300 shadow-lg`}>
+              <div className="py-2 md:p-6 space-y-4 flex md:flex-col flex-row justify-center gap-4">
                 {/* 프로젝트 로고 */}
                 {project.logo && (
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                  <div className=" rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
                     <img src={project.logo} className="w-10 h-10 object-contain" alt={project.name} />
                   </div>
                 )}
