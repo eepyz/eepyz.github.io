@@ -93,7 +93,7 @@ function AppContent() {
       <div className="flex justify-center">
         <div>
           {/* 헤더 */}
-          <header className="flex flex-col md:flex-row items-center justify-between gap-8 mt-20">
+          <header className="flex flex-col md:flex-row items-center justify-between gap-8 mt-20 max-w-md-screen mx-auto">
             <MyInfo />
             <motion.div
               className="flex gap-3 justify-center items-start"
@@ -112,9 +112,11 @@ function AppContent() {
             </motion.div>
           </header>
 
-          <main className="w-full max-w-4xl px-4 md:px-8 py-20 flex flex-col gap-20">
+          <main className="w-full px-4 md:px-8 py-20 flex flex-col gap-20">
             {/* About me */}
-            <section ref={aboutSectionRef} className={`section-fade-up ${aboutVisible ? 'in-view' : ''}`}>
+            <section
+              ref={aboutSectionRef}
+              className={`section-fade-up ${aboutVisible ? 'in-view' : ''} max-w-md-screen mx-auto`}>
               <Title title="About Me" />
               <div className="card p-6 md:p-8">
                 <div className="flex justify-between items-center  flex-col md:flex-row gap-8">
@@ -145,7 +147,9 @@ function AppContent() {
             </section>
 
             {/* Project */}
-            <section ref={projectSectionRef} className={`section-fade-up ${projectVisible ? 'in-view' : ''}`}>
+            <section
+              ref={projectSectionRef}
+              className={`section-fade-up ${projectVisible ? 'in-view' : ''} max-w-[1400px]`}>
               <Title title="Project" />
               <motion.div
                 className="absolute right-0 top-0 w-40 h-40 rounded-full bg-primary/5 dark:bg-primary/10 blur-3xl -z-0"
@@ -169,7 +173,9 @@ function AppContent() {
             </section>
 
             {/* Education */}
-            <section ref={educationSectionRef} className={`section-fade-up ${educationVisible ? 'in-view' : ''}`}>
+            <section
+              ref={educationSectionRef}
+              className={`section-fade-up ${educationVisible ? 'in-view' : ''} max-w-md-screen mx-auto`}>
               <Title title="Education" />
               <div className="card p-6 overflow-hidden relative">
                 {/* 교육 소개 문구 */}
@@ -190,7 +196,7 @@ function AppContent() {
 
             {/* Footer */}
             <motion.footer
-              className="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 py-6"
+              className="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 py-6 max-w-md-screen mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}>

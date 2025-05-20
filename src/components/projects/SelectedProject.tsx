@@ -53,7 +53,7 @@ export function SelectedProject() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-6xl mx-auto">
+            className="w-full">
             <div className="flex flex-col gap-8">
               {/* 프로젝트 헤더 */}
               <div className="text-center">
@@ -80,66 +80,81 @@ export function SelectedProject() {
                   className="text-gray-500">
                   {currentProject.period}
                 </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
+                  className="text-gray-600 hover:text-gray-700 flex justify-center">
+                  <a href={currentProject.link} className="cursor-pointer w-fit">
+                    {currentProject.link}
+                  </a>
+                </motion.p>
               </div>
 
-              {/* 프로젝트 이미지 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative group">
-                <div
-                  onClick={handleProjectLinkClick}
-                  className={`relative h-[500px] rounded-2xl overflow-hidden cursor-pointer ${
-                    currentProject.link ? 'hover:shadow-2xl' : ''
-                  }`}>
-                  {currentProject.img ? (
-                    <img
-                      src={currentProject.img}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                      alt={currentProject.name}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
-                      {currentProject.logo && (
-                        <img src={currentProject.logo} className="w-32 h-32 object-contain" alt={currentProject.name} />
-                      )}
-                    </div>
-                  )}
-                  {currentProject.link && (
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white font-medium">웹사이트 방문</span>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-
-              {/* 프로젝트 설명 카드들 */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="flex flex-wrap gap-4 justify-center">
-                {currentProject.description.contents.map((content, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
-                    className="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg w-[calc(50%-8px)] min-w-[300px]">
-                    <h3 className="text-xl font-semibold mb-3 text-primary">{content.main}</h3>
-                    {content.sub && (
-                      <ul className="space-y-2">
-                        {content.sub.split('\n').map((item, idx) => (
-                          <li key={idx} className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-start ">
+                {/* 프로젝트 이미지 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="relative group">
+                  <div
+                    onClick={handleProjectLinkClick}
+                    className={`relative h-[500px] rounded-2xl overflow-hidden cursor-pointer ${
+                      currentProject.link ? 'hover:shadow-2xl' : ''
+                    }`}>
+                    {currentProject.img ? (
+                      <img
+                        src={currentProject.img}
+                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                        alt={currentProject.name}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
+                        {currentProject.logo && (
+                          <img
+                            src={currentProject.logo}
+                            className="w-32 h-32 object-contain"
+                            alt={currentProject.name}
+                          />
+                        )}
+                      </div>
                     )}
-                  </motion.div>
-                ))}
-              </motion.div>
+                    {currentProject.link && (
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="text-white font-medium">웹사이트 방문</span>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+
+                {/* 프로젝트 설명 카드들 */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="flex flex-wrap gap-4 justify-center md:w-1/2">
+                  {currentProject.description.contents.map((content, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                      className="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg w-[calc(50%-8px)] min-w-[300px]">
+                      <h3 className="text-xl font-semibold mb-3 text-primary">{content.main}</h3>
+                      {content.sub && (
+                        <ul className="space-y-2">
+                          {content.sub.split('\n').map((item, idx) => (
+                            <li key={idx} className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         ) : (
