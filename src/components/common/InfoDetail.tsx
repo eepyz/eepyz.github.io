@@ -15,7 +15,7 @@ export function InfoDetail() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}>
-      <div className="space-y-2 text-gray-700 dark:text-gray-300">
+      <div className="space-y-2 text-gray-700 dark:text-gray-300 ">
         {sentences.map((sentence, index) => (
           <motion.p
             key={index}

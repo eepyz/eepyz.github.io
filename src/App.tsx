@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { EDUCATION, LINKS, SKILLS } from './consts';
-import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import { IoMoon, IoSunny } from 'react-icons/io5';
+import { ThemeProvider } from './contexts/ThemeContext';
+// import { IoMoon, IoSunny } from 'react-icons/io5';
 import { MyInfo } from './components/common/MyInfo';
 import { LinkButton } from './components/common/LinkButton';
 import { Title } from './components/common/Title';
@@ -12,18 +12,18 @@ import { Experiences } from './components/common/Experiences';
 import { Projects } from './components/projects';
 import { useEffect, useRef, useState } from 'react';
 
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  return (
-    <motion.button
-      onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 p-3 rounded-full glassmorphism shadow-soft transition-all duration-300"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}>
-      {theme === 'dark' ? <IoSunny className="text-yellow-300 text-xl" /> : <IoMoon className="text-primary text-xl" />}
-    </motion.button>
-  );
-}
+// function ThemeToggle() {
+//   const { theme, toggleTheme } = useTheme();
+//   return (
+//     <motion.button
+//       onClick={toggleTheme}
+//       className="fixed top-6 right-6 z-50 p-3 rounded-full glassmorphism shadow-soft transition-all duration-300"
+//       whileHover={{ scale: 1.1 }}
+//       whileTap={{ scale: 0.9 }}>
+//       {theme === 'dark' ? <IoSunny className="text-yellow-300 text-xl" /> : <IoMoon className="text-primary text-xl" />}
+//     </motion.button>
+//   );
+// }
 
 function AppContent() {
   const { scrollYProgress } = useScroll();
@@ -90,8 +90,6 @@ function AppContent() {
       <motion.div className="fixed inset-0 -z-10 animated-gradient-bg" style={{ opacity }} />
       <div className="fixed inset-0 -z-5 bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm" />
 
-      <ThemeToggle />
-
       <div className="flex justify-center">
         <div>
           {/* 헤더 */}
@@ -119,7 +117,7 @@ function AppContent() {
             <section ref={aboutSectionRef} className={`section-fade-up ${aboutVisible ? 'in-view' : ''}`}>
               <Title title="About Me" />
               <div className="card p-6 md:p-8">
-                <div className="flex justify-between items-center pb-8 flex-col md:flex-row gap-8">
+                <div className="flex justify-between items-center  flex-col md:flex-row gap-8">
                   <ProfileImage />
                   <InfoDetail />
                 </div>
