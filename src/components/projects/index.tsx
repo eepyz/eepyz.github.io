@@ -5,7 +5,7 @@ import { SelectedProject } from './SelectedProject';
 export function Projects() {
   return (
     <ProjectProvider>
-      <div className="flex flex-col gap-10 py-10">
+      <div className="flex flex-col gap-10">
         <ProjectList />
         <SelectedProject />
       </div>

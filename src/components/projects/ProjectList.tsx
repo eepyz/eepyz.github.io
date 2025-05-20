@@ -1,6 +1,7 @@
 import { useProject } from '../../context/useProject';
 import { PROJECTS } from '../../consts';
 import { Project } from '../../types';
+import { motion } from 'framer-motion';
 
 export function ProjectList() {
   const { currentIndex, setCurrentProject, handleCurrentIndexChange } = useProject();
@@ -11,45 +12,41 @@ export function ProjectList() {
   };
 
   return (
-    <div className="flex gap-10 justify-center min-h-[100px]">
-      {PROJECTS.map((project, index) => (
-        <button
-          key={`${project.name}-${index}`}
-          onClick={() => handleCurrentProjectClick(project, index)}
-          className={
-            `bg-[${project.color}] ` +
-            (currentIndex === index && ' scale-120 z-10 ') +
-            'cursor-pointer aspect-[4/5] min-h-[100px] md:h-[180px] rounded-sm relative overflow-hidden shadow-[-30px_4px_12px_-1px_rgba(0,_0,_0,_0.7)] hover:scale-120 transition-transform hover:z-10'
-          }>
-          {project.logo && (
-            <img
-              src={project.logo}
-              className="absolute left-1/2 top-1/2 w-9 h-9 md:w-[50px] md:h-[50px] object-contain -translate-x-1/2 -translate-y-1/2"
-              alt={project.name}
-            />
-          )}
-          <div
-            className="
-              absolute top-0 left-0 h-full w-[22px]
-              z-10
-              rounded-l-sm
-            "
-            style={{
-              background: `linear-gradient(
-                to right, 
-                rgba(64, 64, 64, 0.3) 3px, 
-                rgba(185, 185, 185, 0.3) 5px, 
-                rgba(255, 255, 255, 0.25) 3px, 
-                rgba(255, 255, 255, 0.2) 10px, 
-                transparent 12px, 
-                transparent 16px, 
-                rgba(255, 255, 255, 0.1) 17px, 
-                transparent 22px
-              )`,
-            }}></div>
-          <div className="absolute top-0 left-0 w-[180px] h-full shadow-[inset_10px_0_30px_-4px_rgba(0,0,0,0.4)] bg-transparent"></div>
-        </button>
-      ))}
+    <div className="relative w-full">
+      <div className="flex gap-4 px-4 justify-center w-full">
+        {PROJECTS.map((project, index) => (
+          <motion.button
+            key={`${project.name}-${index}`}
+            onClick={() => handleCurrentProjectClick(project, index)}
+            className={`flex-shrink-0 relative group cursor-pointer transition-all duration-300 ${
+              currentIndex === index ? 'scale-105 z-10' : 'scale-100 hover:scale-102'
+            }`}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}>
+            <div
+              className={`relative w-[220px] rounded-xl overflow-hidden bg-white dark:bg-gray-800 transition-all duration-300 shadow-lg`}>
+              <div className="p-6 space-y-4">
+                {/* 프로젝트 로고 */}
+                {project.logo && (
+                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                    <img src={project.logo} className="w-10 h-10 object-contain" alt={project.name} />
+                  </div>
+                )}
+
+                {/* 프로젝트 정보 */}
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{project.role}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{project.period}</p>
+                </div>
+
+                {/* 선택 표시 */}
+                {currentIndex === index && <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary" />}
+              </div>
+            </div>
+          </motion.button>
+        ))}
+      </div>
     </div>
   );
 }

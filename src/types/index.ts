@@ -35,4 +35,8 @@ export interface EXPERIENCE {
   description: Description;
   link?: string;
   href?: string;
+  category?: string;
+  skills?: string[];
+  achievement?: string;
+  logo?: string;
 }

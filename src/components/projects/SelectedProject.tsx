@@ -11,39 +11,41 @@ export function SelectedProject() {
   };
 
   return (
-    <div className="p-4 relative ">
-      {/* 왼쪽 화살표 */}
+    <div className="relative px-4">
+      {/* 네비게이션 버튼 */}
+      <div className="absolute inset-y-0 left-0 flex items-center">
+        <motion.button
+          onClick={prevProject}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary  cursor-pointer transition-colors duration-300 z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </motion.button>
+      </div>
 
-      <motion.button
-        onClick={prevProject}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="cursor-pointer flex absolute  left-[-10px] md:left-[-40px] top-1/5 md:top-1/2 -translate-y-1/2 group-hover:flex justify-center items-center w-10 h-10 md:w-12 md:h-12 rounded-full z-10 shadow-md backdrop-blur-sm">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 md:h-6 md:w-6 text-gray-700"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </motion.button>
-
-      {/* 오른쪽 화살표 */}
-      <motion.button
-        onClick={nextProject}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="cursor-pointer flex absolute right-[-30px] md:right-[-40px] top-1/5 md:top-1/2  -translate-y-1/2 group-hover:flex justify-center items-center w-10 h-10 md:w-12 md:h-12 rounded-full z-10 shadow-md backdrop-blur-sm">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 md:h-6 md:w-6 text-gray-700"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </motion.button>
+      <div className="absolute inset-y-0 right-0 flex items-center">
+        <motion.button
+          onClick={nextProject}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:bg-primary cursor-pointer  transition-colors duration-300 z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      </div>
 
       <AnimatePresence mode="wait">
         {currentProject ? (
@@ -53,135 +55,98 @@ export function SelectedProject() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center md:flex-row gap-16">
-            <div className="relative">
+            className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* 프로젝트 이미지 */}
               <motion.div
-                initial={{
-                  rotate: -10,
-                  y: 50,
-                  opacity: 0,
-                  scale: 0.95,
-                }}
-                animate={{
-                  rotate: 2,
-                  y: 20,
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.97,
-                  transition: { duration: 0.3 },
-                }}
-                transition={{
-                  type: 'spring',
-                  damping: 25,
-                  stiffness: 120,
-                  mass: 0.8,
-                  delay: 0.05,
-                  duration: 0.6,
-                }}
-                onClick={handleProjectLinkClick}
-                className={`aspect-[3/4] min-w-[200px]  max-w-[300px] max-h-[400px] rounded-sm relative overflow-hidden transform shadow-[-20px_20px_30px_rgba(0,0,0,0.4)] transition-all duration-300 ${
-                  currentProject.link ? 'cursor-pointer hover:brightness-105' : ''
-                }`}
-                style={{
-                  boxShadow: '-20px 20px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.4)',
-                }}>
-                <motion.div
-                  initial={{ scale: 1.2 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.7 }}
-                  className={`bg-[${currentProject.color}] ` + 'w-full h-full'}>
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative group">
+                <div
+                  onClick={handleProjectLinkClick}
+                  className={`relative mt-0 md:mt-[100px] h-[500px] rounded-2xl overflow-hidden cursor-pointer ${
+                    currentProject.link ? 'hover:shadow-2xl' : ''
+                  }`}>
                   {currentProject.img ? (
                     <img
                       src={currentProject.img}
-                      className="w-full h-full object-cover p-4"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                       alt={currentProject.name}
                     />
                   ) : (
-                    <div className={`w-full h-full bg-[${currentProject.color}]`}>
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
                       {currentProject.logo && (
-                        <img
-                          src={currentProject.logo}
-                          className="absolute left-1/2 top-1/2 w-[100px] h-[100px] object-contain -translate-x-1/2 -translate-y-1/2"
-                          alt={currentProject.name}
-                        />
+                        <img src={currentProject.logo} className="w-32 h-32 object-contain" alt={currentProject.name} />
                       )}
                     </div>
                   )}
-                </motion.div>
-                <div
-                  className="absolute top-0 left-0 h-full w-[22px] z-10 rounded-l-sm"
-                  style={{
-                    background: `linear-gradient(
-                      to right, 
-                      rgba(64, 64, 64, 0.3) 3px, 
-                      rgba(185, 185, 185, 0.3) 5px, 
-                      rgba(255, 255, 255, 0.25) 3px, 
-                      rgba(255, 255, 255, 0.2) 10px, 
-                      transparent 12px, 
-                      transparent 16px, 
-                      rgba(255, 255, 255, 0.1) 17px, 
-                      transparent 22px
-                    )`,
-                  }}></div>
+                  {currentProject.link && (
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white font-medium">웹사이트 방문</span>
+                    </div>
+                  )}
+                </div>
               </motion.div>
-            </div>
-            <motion.div
-              className="flex-1 pt-6"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3,
-                staggerChildren: 0.1,
-              }}>
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="text-3xl font-bold mb-4">
-                {currentProject.name}
-              </motion.h2>
 
-              {currentProject.role && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                  className="text-#979797-600 mb-1 text-lg">
-                  {currentProject.role}
-                </motion.p>
-              )}
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
-                className="mb-4 text-gray-500">
-                {currentProject.period}
-              </motion.p>
-
+              {/* 프로젝트 정보 */}
               <motion.div
-                className="space-y-6 mt-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}>
-                {currentProject.description.contents.map((content, index) => (
-                  <motion.div
-                    key={index}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="space-y-6">
+                <div>
+                  <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}>
-                    <h3 className="font-semibold text-xl mb-2">{content.main}</h3>
-                    {content.sub && <p className="text-gray-600">{content.sub}</p>}
-                  </motion.div>
-                ))}
+                    transition={{ duration: 0.4, delay: 0.4 }}
+                    className="text-4xl font-bold mb-3">
+                    {currentProject.name}
+                  </motion.h2>
+                  {currentProject.role && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.5 }}
+                      className="text-xl text-gray-600 dark:text-gray-300 mb-2">
+                      {currentProject.role}
+                    </motion.p>
+                  )}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                    className="text-gray-500">
+                    {currentProject.period}
+                  </motion.p>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="space-y-6">
+                  {currentProject.description.contents.map((content, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                      className="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg">
+                      <h3 className="text-xl font-semibold mb-2 text-primary">{content.main}</h3>
+                      {content.sub && <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{content.sub}</p>}
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
         ) : (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-gray-500">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="text-center text-gray-500 text-lg">
             선택된 프로젝트가 없습니다
           </motion.p>
         )}
