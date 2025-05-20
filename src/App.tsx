@@ -116,7 +116,7 @@ function AppContent() {
             {/* About me */}
             <section
               ref={aboutSectionRef}
-              className={`section-fade-up ${aboutVisible ? 'in-view' : ''} max-w-md-screen mx-auto`}>
+              className={`section-fade-up ${aboutVisible ? 'in-view' : ''} max-w-screen  mx-auto`}>
               <Title title="About Me" />
               <div className="card p-6 md:p-8">
                 <div className="flex justify-between items-center  flex-col md:flex-row gap-8">
@@ -175,37 +175,27 @@ function AppContent() {
             {/* Education */}
             <section
               ref={educationSectionRef}
-              className={`section-fade-up ${educationVisible ? 'in-view' : ''} max-w-md-screen mx-auto`}>
+              className={`section-fade-up ${educationVisible ? 'in-view' : ''} max-w-[850px] w-full mx-auto `}>
               <Title title="Education" />
-              <div className="card p-6 overflow-hidden relative">
-                {/* 교육 소개 문구 */}
-                {educationVisible && (
-                  <motion.div
-                    className="mb-8 text-center relative z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2 }}></motion.div>
-                )}
-
+              <div className="card py-6 overflow-hidden relative">
                 {/* 교육 경험 내용 */}
-                <div className="relative z-10">
+                <div className="relative z-10 flex justify-center">
                   <Experiences experiences={EDUCATION} />
                 </div>
               </div>
             </section>
-
-            {/* Footer */}
-            <motion.footer
-              className="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 py-6 max-w-md-screen mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}>
-              <div className="mb-2">© 2025 신명희. All rights reserved.</div>
-              <div>
-                Made with <span className="text-red-500"></span> using React, TypeScript & Tailwind CSS
-              </div>
-            </motion.footer>
           </main>
+          {/* Footer */}
+          <motion.footer
+            className="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 py-6 max-w-md-screen mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}>
+            <div className="mb-2">© 2025 신명희. All rights reserved.</div>
+            <div>
+              Made with <span className="text-red-500"></span> using React, TypeScript & Tailwind CSS
+            </div>
+          </motion.footer>
         </div>
       </div>
     </div>

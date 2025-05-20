@@ -176,6 +176,20 @@ export const EDUCATION: EXPERIENCE[] = [
     link: '',
   },
   {
+    name: '영남기술직업전문학교',
+    role: '자바(JAVA) & JSP웹 개발자 과정',
+    period: '2021.04 - 2021.10',
+    description: {
+      title: '',
+      contents: [
+        { main: '자바 기초부터 심화까지 학습' },
+        { main: 'JSP와 웹 개발 기초 학습' },
+        { main: 'JSP 팀 프로젝트 구현' },
+      ],
+    },
+    link: '',
+  },
+  {
     name: '계명대학교',
     role: '유아교육과',
     period: '2016.03 - 2020.02',

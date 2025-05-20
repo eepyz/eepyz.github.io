@@ -9,45 +9,10 @@ interface ExperienceItemProps {
   isLast: boolean;
 }
 
-function ExperienceItem({ experience, index, isLast }: ExperienceItemProps) {
+function ExperienceItem({ experience, index }: ExperienceItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const { name, period, role, description, category, achievement, logo } = experience;
-
-  // 카테고리별 색상 정의
-  const getCategoryColor = (category?: string) => {
-    switch (category) {
-      case 'education':
-        return 'var(--color-primary)';
-      case 'bootcamp':
-        return 'var(--color-secondary)';
-      case 'certification':
-        return 'var(--color-accent)';
-      case 'course':
-        return '#f59e0b'; // amber-500
-      default:
-        return '#6b7280'; // gray-500
-    }
-  };
-
-  // 카테고리별 이름 정의
-  const getCategoryName = (category?: string) => {
-    switch (category) {
-      case 'education':
-        return '정규 교육';
-      case 'bootcamp':
-        return '부트캠프';
-      case 'certification':
-        return '자격증';
-      case 'course':
-        return '수료 과정';
-      default:
-        return '교육';
-    }
-  };
-
-  const categoryColor = getCategoryColor(category);
-  const categoryName = getCategoryName(category);
+  const { name, period, role, description, achievement } = experience;
 
   return (
     <motion.div
@@ -56,64 +21,32 @@ function ExperienceItem({ experience, index, isLast }: ExperienceItemProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}>
-      {/* Timeline connector */}
-      {!isLast && (
-        <div className="absolute left-4 top-8 bottom-[-48px] w-0.5 bg-gradient-to-b from-primary/50 to-primary/5 hidden md:block"></div>
-      )}
-
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex-1 flex flex-col md:flex-row gap-6 p-5 rounded-xl transition-colors duration-300">
+        <div className="flex-1 flex flex-col md:flex-row md:gap-6 p-5 md:p-1 rounded-xl transition-colors duration-300">
           {/* Left side - details */}
-          <div className="md:w-1/3 flex flex-col">
-            <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-4 mb-4 relative overflow-hidden">
-              {/* 카테고리 뱃지 */}
-              {category && (
-                <div
-                  style={{
-                    backgroundColor: categoryColor,
-                    color: 'white',
-                  }}
-                  className="absolute top-0 right-0 px-3 py-1 text-xs font-medium rounded-bl-lg">
-                  {categoryName}
-                </div>
-              )}
-
-              {/* 로고가 있으면 표시 */}
-              {logo && (
-                <div className="flex justify-center mb-3">
-                  <img src={logo} alt={`${name} 로고`} className="h-12 w-auto object-contain mb-2" />
-                </div>
-              )}
-
-              <div className="text-xl font-bold text-primary hover:underline mb-2 flex items-center gap-2">
-                <IoSchoolOutline className="text-xl" />
-                <span>{name}</span>
+          <div className="md:w-2/5 flex flex-col">
+            <div className="bg-primary/5 dark:bg-primary/10 rounded-lg px-4 md:p-4 md:mb-4 relative overflow-hidden">
+              <div className="text-xl font-bold text-primary hover:underline mb-2 flex items-start gap-2">
+                <IoSchoolOutline className="text-xl flex-shrink-0 mt-1" />
+                <span className="break-words">{name}</span>
               </div>
 
               {role && (
-                <div className="text-gray-700 dark:text-gray-300 font-medium mb-1 flex items-center gap-2">
-                  <IoBookOutline className="text-secondary text-sm" />
-                  <span>{role}</span>
+                <div className="text-gray-700 dark:text-gray-300 font-medium mb-1 flex items-start gap-2">
+                  <IoBookOutline className="text-secondary text-sm flex-shrink-0 mt-1" />
+                  <span className="break-words">{role}</span>
                 </div>
               )}
 
-              <div className="text-gray-500 dark:text-gray-400 text-sm mb-2 flex items-center gap-2">
-                <IoCalendarOutline className="text-sm" />
-                <span>{period}</span>
+              <div className="text-gray-500 dark:text-gray-400 text-sm mb-2 flex items-start gap-2">
+                <IoCalendarOutline className="text-sm flex-shrink-0 mt-1" />
+                <span className="break-words">{period}</span>
               </div>
-
-              {/* 성과 표시 */}
-              {achievement && (
-                <div className="text-accent dark:text-accent-light text-sm mt-2 font-medium flex items-center gap-2">
-                  <IoTrophyOutline className="text-sm" />
-                  <span>{achievement}</span>
-                </div>
-              )}
             </div>
           </div>
 
           {/* Right side - content */}
-          <div className="md:w-2/3">
+          <div className="md:w-1/2">
             {description.title && (
               <motion.div
                 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-4 px-3 py-1.5 bg-secondary/5 dark:bg-secondary/10 rounded-md inline-block"
@@ -153,7 +86,7 @@ interface ExperiencesProps {
 
 export function Experiences({ experiences }: ExperiencesProps) {
   return (
-    <div className="flex flex-col gap-12 py-6">
+    <div className="flex flex-col gap-12  py-6">
       {experiences.map((experience, index) => (
         <ExperienceItem
           key={experience.name}
