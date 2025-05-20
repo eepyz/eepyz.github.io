@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { EXPERIENCE } from '../../types';
 import { useRef } from 'react';
-import { IoSchoolOutline, IoBookOutline, IoCalendarOutline, IoTrophyOutline } from 'react-icons/io5';
+import { IoSchoolOutline, IoBookOutline, IoCalendarOutline } from 'react-icons/io5';
 
 interface ExperienceItemProps {
   experience: EXPERIENCE;
@@ -12,7 +12,7 @@ interface ExperienceItemProps {
 function ExperienceItem({ experience, index }: ExperienceItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const { name, period, role, description, achievement } = experience;
+  const { name, period, role, description } = experience;
 
   return (
     <motion.div
